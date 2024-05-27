@@ -1,0 +1,75 @@
+{
+  "id": "home_about2",
+  "type": "SharedSlice",
+  "name": "HomeAbout2",
+  "description": "HomeAbout2",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading2"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "button1": {
+          "type": "Link",
+          "config": {
+            "label": "Button1",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "button1text": {
+          "type": "Text",
+          "config": {
+            "label": "Button1Text",
+            "placeholder": ""
+          }
+        },
+        "button2": {
+          "type": "Link",
+          "config": {
+            "label": "Button2",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "button2text": {
+          "type": "Text",
+          "config": {
+            "label": "Button2Text",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
