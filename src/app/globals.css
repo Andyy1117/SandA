@@ -31,3 +31,32 @@
   }
 }
 
+/* styles.css */
+.container {
+  position: relative;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.text-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  width: 100%;
+  max-width: 500px; /* Adjust based on your design */
+  padding-right: 16px; /* Adjust for spacing */
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-grow: 1;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+

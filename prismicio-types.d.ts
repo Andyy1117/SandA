@@ -5,6 +5,8 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | AboutHistorySlice
+  | AboutHeaderSlice
   | ContactSlice
   | FaqSlice
   | ServicesSlice
@@ -187,6 +189,121 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes = PageDocument | SettingsDocument;
+
+/**
+ * Primary content in *AboutHeader → Primary*
+ */
+export interface AboutHeaderSliceDefaultPrimary {
+  /**
+   * Title field in *AboutHeader → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_header.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+}
+
+/**
+ * Default variation for AboutHeader Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutHeaderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutHeaderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutHeader*
+ */
+type AboutHeaderSliceVariation = AboutHeaderSliceDefault;
+
+/**
+ * AboutHeader Shared Slice
+ *
+ * - **API ID**: `about_header`
+ * - **Description**: AboutHeader
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutHeaderSlice = prismic.SharedSlice<
+  "about_header",
+  AboutHeaderSliceVariation
+>;
+
+/**
+ * Primary content in *AboutHistory → Primary*
+ */
+export interface AboutHistorySliceDefaultPrimary {
+  /**
+   * Title field in *AboutHistory → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_history.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Body field in *AboutHistory → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_history.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *AboutHistory → Items*
+ */
+export interface AboutHistorySliceDefaultItem {
+  /**
+   * Image field in *AboutHistory → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_history.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for AboutHistory Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutHistorySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutHistorySliceDefaultPrimary>,
+  Simplify<AboutHistorySliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *AboutHistory*
+ */
+type AboutHistorySliceVariation = AboutHistorySliceDefault;
+
+/**
+ * AboutHistory Shared Slice
+ *
+ * - **API ID**: `about_history`
+ * - **Description**: AboutHistory
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutHistorySlice = prismic.SharedSlice<
+  "about_history",
+  AboutHistorySliceVariation
+>;
 
 /**
  * Primary content in *Contact → Primary*
@@ -1031,6 +1148,15 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
       AllDocumentTypes,
+      AboutHeaderSlice,
+      AboutHeaderSliceDefaultPrimary,
+      AboutHeaderSliceVariation,
+      AboutHeaderSliceDefault,
+      AboutHistorySlice,
+      AboutHistorySliceDefaultPrimary,
+      AboutHistorySliceDefaultItem,
+      AboutHistorySliceVariation,
+      AboutHistorySliceDefault,
       ContactSlice,
       ContactSliceDefaultPrimary,
       ContactSliceDefaultItem,

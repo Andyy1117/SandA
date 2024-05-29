@@ -27,6 +27,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "about_history": {
+              "type": "SharedSlice"
+            },
+            "about_header": {
+              "type": "SharedSlice"
+            },
             "contact": {
               "type": "SharedSlice"
             },

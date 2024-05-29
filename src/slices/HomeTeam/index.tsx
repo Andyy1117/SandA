@@ -20,9 +20,11 @@ const HomeTeam = ({ slice }: HomeTeamProps): JSX.Element => {
       <PrismicRichText 
       field={slice.primary.title} 
       
-          components={{
-            heading2: ({ children }) =>
-              <h2 className="text-balance text-center text-4xl md:text-5xl font-bold">{ children }</h2>
+      components={{
+        heading2: ({ children }) =>
+              <h2 className="text-balance text-center text-4xl md:text-5xl font-bold">
+                { children }
+              </h2>
           }}/>
 
       <div className="mx-auto max-w-md text-center text-balance mt-6 text-lg">

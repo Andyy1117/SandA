@@ -17,15 +17,14 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative flex items-center justify-center min-h-screen text-center bg-gray-800"
+      className="relative flex items-center justify-center min-h-screen text-center bg-gray-800 mt-24"
     >
       {isFilled.image(slice.primary.image) && (
         <div className="absolute inset-0 overflow-hidden z-0">
           <PrismicNextImage 
             field={slice.primary.image} 
             className="w-full h-full object-cover"
-           
-          />
+            />
           <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
       )}

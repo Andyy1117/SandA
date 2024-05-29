@@ -20,7 +20,7 @@ export default function Navbar({settings}:NavbarProps) {
 
   return (
     <header className="fixed w-full top-0 z-50 bg-white">
-      <nav className='sticky px-4 py-4 md:px-2 md-:py-2 border-b border-slate-600' aria-label='Main'>
+      <nav className='px-4 py-4 md:px-2 md-:py-2 shadow-b shadow-sm shadow-slate-300' aria-label='Main'>
         <div className="mx-auto flex max-w-7xl flex-col justify-between py-1 font-medium md:flex-row md:items-center ">
 
         <div className="flex items-center justify-between">
