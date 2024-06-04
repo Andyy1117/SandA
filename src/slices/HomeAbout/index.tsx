@@ -1,22 +1,28 @@
+"use client"
 import Bounded from "@/components/Bounded";
+import StarGrid from "@/components/StarGrid";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { useRef } from "react";
 
 /**
  * Props for `HomeAbout`.
  */
 export type HomeAboutProps = SliceComponentProps<Content.HomeAboutSlice>;
 
+
 /**
  * Component for "HomeAbout" Slices.
  */
 const HomeAbout = ({ slice }: HomeAboutProps): JSX.Element => {
+  
   return (
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
+      <div className="relative">
       <div className="flex flex-col md:flex-row items-center md:items-start md:space-x-8 ">
         <div className="md:w-1/2 p-4 md:pt-40">
             <PrismicRichText 
@@ -43,6 +49,7 @@ const HomeAbout = ({ slice }: HomeAboutProps): JSX.Element => {
       </div>
 
       
+      </div>
     </Bounded>
   );
 };

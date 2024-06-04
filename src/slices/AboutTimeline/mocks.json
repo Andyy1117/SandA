@@ -1,0 +1,79 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Successful"
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Fugiat est ut consectetur nostrud cillum consequat labore velit commodo laborum. Non do reprehenderit tempor qui. Aute eiusmod duis dolore dolore excepteur eu commodo culpa commodo occaecat officia nostrud consequat irure aliqua."
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"timeline",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Occaecat irure labore reprehenderit deserunt sit amet ex proident. Officia laborum mollit voluptate ex eu enim."
+									}
+								}
+							]
+						}
+					],
+					[
+						"date",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Ullamco ex et eiusmod dolor cupidatat mollit elit laborum incididunt ipsum proident eiusmod tempor."
+									}
+								}
+							]
+						}
+					],
+					[
+						"title",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Eiusmod sunt tempor tempor culpa enim voluptate sit amet ullamco ex sint duis laboris tempor. Enim qui voluptate esse laborum consequat eiusmod sunt id velit proident mollit ullamco."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
+	}
+]

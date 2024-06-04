@@ -6,6 +6,7 @@ import {
 import { SliceZone } from "@prismicio/react";
 
 import { components } from "@/slices";
+import StarGrid from "@/components/StarGrid";
 
 export default function SliceSimulatorPage({
   searchParams,
@@ -14,6 +15,7 @@ export default function SliceSimulatorPage({
 
   return (
     <SliceSimulator>
+      <StarGrid />
       <SliceZone slices={slices} components={components} />
     </SliceSimulator>
   );

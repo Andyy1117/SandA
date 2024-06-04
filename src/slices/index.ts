@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 export const components = {
   about_header: dynamic(() => import("./AboutHeader")),
   about_history: dynamic(() => import("./AboutHistory")),
+  about_timeline: dynamic(() => import("./AboutTimeline")),
   contact: dynamic(() => import("./Contact")),
   cta: dynamic(() => import("./Cta")),
   faq: dynamic(() => import("./Faq")),
@@ -13,5 +14,10 @@ export const components = {
   home_about2: dynamic(() => import("./HomeAbout2")),
   home_team: dynamic(() => import("./HomeTeam")),
   rich_text: dynamic(() => import("./RichText")),
+  service_benefits: dynamic(() => import("./ServiceBenefits")),
+  service_features: dynamic(() => import("./ServiceFeatures")),
+  service_fields: dynamic(() => import("./ServiceFields")),
+  service_header: dynamic(() => import("./ServiceHeader")),
+  service_process: dynamic(() => import("./ServiceProcess")),
   services: dynamic(() => import("./Services")),
 };

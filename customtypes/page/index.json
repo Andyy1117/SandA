@@ -27,6 +27,24 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "service_process": {
+              "type": "SharedSlice"
+            },
+            "service_benefits": {
+              "type": "SharedSlice"
+            },
+            "service_features": {
+              "type": "SharedSlice"
+            },
+            "service_fields": {
+              "type": "SharedSlice"
+            },
+            "service_header": {
+              "type": "SharedSlice"
+            },
+            "about_timeline": {
+              "type": "SharedSlice"
+            },
             "about_history": {
               "type": "SharedSlice"
             },

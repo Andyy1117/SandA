@@ -2,7 +2,7 @@ import Bounded from "@/components/Bounded";
 import ButtonOrange from "@/components/ButtonOrange";
 import ButtonWhite from "@/components/ButtonWhite";
 import { Content } from "@prismicio/client";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
 /**
@@ -15,45 +15,51 @@ export type CtaProps = SliceComponentProps<Content.CtaSlice>;
  */
 const Cta = ({ slice }: CtaProps): JSX.Element => {
   return (
-    <Bounded
+    <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-[#FFA500]"
     >
-      <div className="flex flex-col md:flex-row">
-        <div className="md:w-1/2 p-4 mt-28">
-          
-          <PrismicRichText 
-          field={slice.primary.title}
-          components={{
-            heading2: ({ children }) => 
-              <h2 className="text-balance text-center text-5xl font-medium text-white">{ children }</h2>
-            }} />
-          
+      <div className="relative flex flex-col md:flex-row items-center justify-center">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center z-0"
+          style={{ backgroundImage: `url(${slice.primary.image.url})` }}
+        ></div>
 
-          <div className="text-balance text-center mt-6 text-white">
-            <PrismicRichText field={slice.primary.body} />
-          </div>
-        
-        <div className="flex flex-row items-center justify-center space-x-4 mt-6 ">
-          <ButtonOrange 
-          field={slice.primary.button1text}
-          >
-            <>{slice.primary.button1link}</>
-          </ButtonOrange>
-          <ButtonWhite
-          field={slice.primary.button2}
-          >
-            <>{slice.primary.button2text}</>
-          </ButtonWhite>
-        </div>
-        </div>
+        {/* Content with transparent background */}
 
-        <div className="md:w-1/2">
-          <PrismicNextImage field={slice.primary.image} className="rounded-lg" />
+        <div className="relative z-10 h-full w-full md:p-24 bg-black bg-opacity-50">
+          <Bounded>
+            <div className="flex flex-col md:flex-row">
+              <div className="md:w-1/2 my-auto md:mx-16">
+                <PrismicRichText 
+                  field={slice.primary.title}
+                  components={{
+                    heading2: ({ children }) => 
+                      <h2 className="text-balance text-left text-5xl font-medium text-white">{children}</h2>
+                  }} 
+                  />
+                </div>
+
+            <div className="md:w-1/2 md:mx-16">
+              <div className="text-balance text-left md:text-right mt-6 text-white">
+                <PrismicRichText field={slice.primary.body} />
+              </div>
+
+              <div className="flex flex-row items-start md:items-end justify-start md:justify-end space-x-4 mt-6 ">
+                <ButtonOrange field={slice.primary.button1text}>
+                  {slice.primary.button1link}
+                </ButtonOrange>
+                <ButtonWhite field={slice.primary.button2}>
+                  {slice.primary.button2text}
+                </ButtonWhite>
+              </div>
+            </div>
+            </div>
+          </Bounded>
         </div>
       </div>
-    </Bounded>
+    </section>
   );
 };
 

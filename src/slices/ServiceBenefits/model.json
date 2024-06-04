@@ -1,8 +1,8 @@
 {
-  "id": "hero",
+  "id": "service_benefits",
   "type": "SharedSlice",
-  "name": "Hero",
-  "description": "Hero",
+  "name": "ServiceBenefits",
+  "description": "ServiceBenefits",
   "variations": [
     {
       "id": "default",
@@ -18,7 +18,7 @@
             "label": "Title",
             "placeholder": "",
             "allowTargetBlank": true,
-            "single": "heading1"
+            "single": "heading2"
           }
         },
         "body": {
@@ -30,18 +30,34 @@
             "single": "paragraph"
           }
         },
-        "button_link": {
+        "button1link": {
           "type": "Link",
           "config": {
-            "label": "Button Link",
+            "label": "Button1Link",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        },
+        "button2label": {
+          "type": "Text",
+          "config": {
+            "label": "Button2Label",
+            "placeholder": ""
+          }
+        },
+        "button2link": {
+          "type": "Link",
+          "config": {
+            "label": "Button2Link",
             "placeholder": "",
             "select": null
           }
         },
-        "button_label": {
+        "button2text": {
           "type": "Text",
           "config": {
-            "label": "Button Label",
+            "label": "Button2Text",
             "placeholder": ""
           }
         },

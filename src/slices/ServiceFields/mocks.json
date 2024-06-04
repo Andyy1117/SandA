@@ -1,0 +1,62 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Basket"
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"icons",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "Construction",
+							"type": "Select"
+						}
+					],
+					[
+						"header",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "heading3",
+									"content": {
+										"text": "Political"
+									}
+								}
+							]
+						}
+					],
+					[
+						"description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Nisi id deserunt esse nisi nostrud sint dolor. Occaecat officia eu duis id eiusmod do anim sint pariatur tempor in exercitation enim officia consectetur. Veniam culpa consequat do aliquip Lorem occaecat."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
+	}
+]

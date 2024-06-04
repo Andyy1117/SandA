@@ -1,8 +1,8 @@
 {
-  "id": "hero",
+  "id": "service_process",
   "type": "SharedSlice",
-  "name": "Hero",
-  "description": "Hero",
+  "name": "ServiceProcess",
+  "description": "ServiceProcess",
   "variations": [
     {
       "id": "default",
@@ -12,13 +12,32 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading2"
+          }
+        }
+      },
+      "items": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
         "title": {
           "type": "StructuredText",
           "config": {
             "label": "Title",
             "placeholder": "",
             "allowTargetBlank": true,
-            "single": "heading1"
+            "single": "heading3"
           }
         },
         "body": {
@@ -29,32 +48,8 @@
             "allowTargetBlank": true,
             "single": "paragraph"
           }
-        },
-        "button_link": {
-          "type": "Link",
-          "config": {
-            "label": "Button Link",
-            "placeholder": "",
-            "select": null
-          }
-        },
-        "button_label": {
-          "type": "Text",
-          "config": {
-            "label": "Button Label",
-            "placeholder": ""
-          }
-        },
-        "image": {
-          "type": "Image",
-          "config": {
-            "label": "Image",
-            "constraint": {},
-            "thumbnails": []
-          }
         }
-      },
-      "items": {}
+      }
     }
   ]
 }
