@@ -1,8 +1,8 @@
 {
-  "id": "faq",
+  "id": "secondary_cta",
   "type": "SharedSlice",
-  "name": "Faq",
-  "description": "Faq",
+  "name": "SecondaryCta",
+  "description": "SecondaryCta",
   "variations": [
     {
       "id": "default",
@@ -29,28 +29,24 @@
             "allowTargetBlank": true,
             "single": "paragraph"
           }
-        }
-      },
-      "items": {
-        "question": {
-          "type": "StructuredText",
+        },
+        "button_link": {
+          "type": "Link",
           "config": {
-            "label": "Question",
+            "label": "Button Link",
             "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "heading3,strong"
+            "select": null
           }
         },
-        "answer": {
-          "type": "StructuredText",
+        "button_label": {
+          "type": "Text",
           "config": {
-            "label": "Answer",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "paragraph"
+            "label": "Button Label",
+            "placeholder": ""
           }
         }
-      }
+      },
+      "items": {}
     }
   ]
 }

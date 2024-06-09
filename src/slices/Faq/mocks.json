@@ -24,40 +24,6 @@
 						}
 					}
 				]
-			},
-			"title2": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading3",
-						"content": {
-							"text": "Circus"
-						}
-					}
-				]
-			},
-			"body2": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Velit tempor mollit sunt sit laboris fugiat."
-						}
-					}
-				]
-			},
-			"button_link": {
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "https://prismic.io"
-				}
-			},
-			"button_label": {
-				"__TYPE__": "FieldContent",
-				"value": "aid",
-				"type": "Text"
 			}
 		},
 		"items": [

@@ -1,5 +1,6 @@
 import Bounded from "@/components/Bounded";
 import ButtonOrange from "@/components/ButtonOrange";
+import ButtonWhite from "@/components/ButtonWhite";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, PrismicText, SliceComponentProps } from "@prismicio/react";

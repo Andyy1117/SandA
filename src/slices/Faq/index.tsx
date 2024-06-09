@@ -25,11 +25,11 @@ const Faq = ({ slice }: FaqProps): JSX.Element => {
         field={slice.primary.title} 
         components={{
           heading2: ({ children }) =>
-            <h2 className="text-balance text-center font-medium text-5xl">{children}</h2>
+            <h2 className="text-balance text-center font-bold text-4xl md:text-5xl">{children}</h2>
         }}
       />
 
-      <div className="mx-auto max-w-md text-center text-balance mt-6 text-xl"> 
+      <div className="mx-auto max-w-md text-center text-balance mt-6 text-xl text-slate-600"> 
         <PrismicRichText field={slice.primary.body} />
       </div>
 
@@ -46,25 +46,6 @@ const Faq = ({ slice }: FaqProps): JSX.Element => {
           />
         ))}
       </div>
-
-      <PrismicRichText 
-        field={slice.primary.title2} 
-        components={{
-          heading3: ({ children }) =>
-            <h2 className="text-balance text-center font-medium text-4xl md:text-5xl mt-20">{children}</h2>
-        }}
-      />
-
-        <div className="mx-auto max-w-md text-center text-balance mt-6 text-lg">
-            <PrismicRichText field={slice.primary.body2} />
-        </div>
-        <div className="mt-8 flex justify-center space-x-4">
-          <ButtonOrange
-          field={slice.primary.button_link}>
-            <>{slice.primary.button_label}</>
-          </ButtonOrange>
-
-        </div>
     </Bounded>
   );
 };

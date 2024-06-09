@@ -27,6 +27,15 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "secondary_cta": {
+              "type": "SharedSlice"
+            },
+            "contact_form": {
+              "type": "SharedSlice"
+            },
+            "contact_header": {
+              "type": "SharedSlice"
+            },
             "service_process": {
               "type": "SharedSlice"
             },

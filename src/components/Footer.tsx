@@ -9,7 +9,7 @@ export default async function Footer() {
   
   return (
     
-    <footer>
+    <footer className='bg-[#ffa600] text-white'>
       <div className='flex flex-col items-center justify-between gap-6 px-8 py-7 md:flex-row'>
         <Link href="/">
           <Logo width={60} height={60} />
@@ -27,7 +27,7 @@ export default async function Footer() {
         </nav>
       </div>
       
-      <div className='w-full border-t border-slate-600 pt-4 mt-6 mx-auto justify-center text-center md:mt-0 mb-4'>
+      <div className='w-full border-t border-slate-600 pt-4 mt-6 mx-auto justify-center text-center md:mt-0 mb-4 bg-white'>
         <p className='text-sm text-slate-500'>
           &copy; {new Date().getFullYear()} S&A Trade LLC. All rights reserved.
         </p>

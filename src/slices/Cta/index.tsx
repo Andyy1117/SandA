@@ -42,7 +42,7 @@ const Cta = ({ slice }: CtaProps): JSX.Element => {
                 </div>
 
             <div className="md:w-1/2 md:mx-16">
-              <div className="text-balance text-left md:text-right mt-6 text-white">
+              <div className="text-balance text-left md:text-right mt-6 text-white text-xl font-medium">
                 <PrismicRichText field={slice.primary.body} />
               </div>
 

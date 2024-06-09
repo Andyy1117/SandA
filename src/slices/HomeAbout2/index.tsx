@@ -32,7 +32,7 @@ const HomeAbout2 = ({ slice }: HomeAbout2Props): JSX.Element => {
             heading2: ({ children }) =>
               <h2 className="text-balance text-center text-white text-4xl md:text-5xl font-medium">{ children }</h2>
           }}/>
-          <div className="mx-auto mt-6 max-w-md text-balance text-white text-center">
+          <div className="mx-auto mt-6 max-w-md text-balance text-white text-center text-xl font-medium">
             <PrismicRichText field={slice.primary.body} />
           </div>
 
