@@ -27,6 +27,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "case_study": {
+              "type": "SharedSlice"
+            },
+            "projects_header": {
+              "type": "SharedSlice"
+            },
             "secondary_cta": {
               "type": "SharedSlice"
             },

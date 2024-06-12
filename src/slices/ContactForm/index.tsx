@@ -28,12 +28,12 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
       </div>
 
       <Bounded>
-        <div className="relative z-20 text-white p-4 w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl">
+        <div className="relative z-20 p-4 w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl">
           <PrismicRichText 
             field={slice.primary.heading} 
             components={{
               heading2: ({ children }) => (
-                <h2 className="text-4xl font-medium md:text-5xl mb-4">
+                <h2 className="text-4xl font-medium md:text-5xl mb-4 text-white">
                   {children}
                 </h2>
               ),

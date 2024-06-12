@@ -4,7 +4,113 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type CaseStudyDocumentDataSlicesSlice =
+  | ContactSlice
+  | CarousalSlice
+  | ProjectSpec2Slice
+  | AboutTimelineSlice
+  | ProjectSpec1Slice
+  | RichTextSlice;
+
+/**
+ * Content for Case Study documents
+ */
+interface CaseStudyDocumentData {
+  /**
+   * Heading field in *Case Study*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.heading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Body field in *Case Study*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.body
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Image field in *Case Study*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *Case Study*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CaseStudyDocumentDataSlicesSlice> /**
+   * Meta Description field in *Case Study*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: case_study.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Case Study*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Case Study*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: case_study.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Case Study document from Prismic
+ *
+ * - **API ID**: `case_study`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CaseStudyDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CaseStudyDocumentData>,
+    "case_study",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice =
+  | CaseStudySlice
+  | ProjectsHeaderSlice
   | SecondaryCtaSlice
   | ContactFormSlice
   | ContactHeaderSlice
@@ -197,7 +303,10 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = PageDocument | SettingsDocument;
+export type AllDocumentTypes =
+  | CaseStudyDocument
+  | PageDocument
+  | SettingsDocument;
 
 /**
  * Primary content in *AboutHeader → Primary*
@@ -402,6 +511,166 @@ type AboutTimelineSliceVariation = AboutTimelineSliceDefault;
 export type AboutTimelineSlice = prismic.SharedSlice<
   "about_timeline",
   AboutTimelineSliceVariation
+>;
+
+/**
+ * Primary content in *Carousal → Primary*
+ */
+export interface CarousalSliceDefaultPrimary {
+  /**
+   * Title field in *Carousal → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousal.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Body field in *Carousal → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousal.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Carousal → Items*
+ */
+export interface CarousalSliceDefaultItem {
+  /**
+   * Image field in *Carousal → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousal.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *Carousal → Items*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousal.items[].heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Description field in *Carousal → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousal.items[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Carousal Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarousalSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CarousalSliceDefaultPrimary>,
+  Simplify<CarousalSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Carousal*
+ */
+type CarousalSliceVariation = CarousalSliceDefault;
+
+/**
+ * Carousal Shared Slice
+ *
+ * - **API ID**: `carousal`
+ * - **Description**: Carousal
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarousalSlice = prismic.SharedSlice<
+  "carousal",
+  CarousalSliceVariation
+>;
+
+/**
+ * Primary content in *CaseStudy → Primary*
+ */
+export interface CaseStudySliceDefaultPrimary {
+  /**
+   * Title field in *CaseStudy → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Body field in *CaseStudy → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *CaseStudy → Items*
+ */
+export interface CaseStudySliceDefaultItem {
+  /**
+   * Case Study field in *CaseStudy → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: case_study.items[].case_study
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  case_study: prismic.ContentRelationshipField;
+}
+
+/**
+ * Default variation for CaseStudy Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CaseStudySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CaseStudySliceDefaultPrimary>,
+  Simplify<CaseStudySliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *CaseStudy*
+ */
+type CaseStudySliceVariation = CaseStudySliceDefault;
+
+/**
+ * CaseStudy Shared Slice
+ *
+ * - **API ID**: `case_study`
+ * - **Description**: CaseStudy
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CaseStudySlice = prismic.SharedSlice<
+  "case_study",
+  CaseStudySliceVariation
 >;
 
 /**
@@ -1146,6 +1415,241 @@ export type HomeTeamSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ProjectSpec1 → Primary*
+ */
+export interface ProjectSpec1SliceDefaultPrimary {
+  /**
+   * Title field in *ProjectSpec1 → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_spec1.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Body field in *ProjectSpec1 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_spec1.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ProjectSpec1 → Items*
+ */
+export interface ProjectSpec1SliceDefaultItem {
+  /**
+   * Image field in *ProjectSpec1 → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_spec1.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ProjectSpec1 Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectSpec1SliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectSpec1SliceDefaultPrimary>,
+  Simplify<ProjectSpec1SliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *ProjectSpec1*
+ */
+type ProjectSpec1SliceVariation = ProjectSpec1SliceDefault;
+
+/**
+ * ProjectSpec1 Shared Slice
+ *
+ * - **API ID**: `project_spec1`
+ * - **Description**: ProjectSpec1
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectSpec1Slice = prismic.SharedSlice<
+  "project_spec1",
+  ProjectSpec1SliceVariation
+>;
+
+/**
+ * Primary content in *ProjectSpec2 → Primary*
+ */
+export interface ProjectSpec2SliceDefaultPrimary {
+  /**
+   * Title field in *ProjectSpec2 → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_spec2.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Body field in *ProjectSpec2 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_spec2.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button Link field in *ProjectSpec2 → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_spec2.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * Button Label field in *ProjectSpec2 → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_spec2.primary.button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
+
+  /**
+   * Image field in *ProjectSpec2 → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_spec2.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *ProjectSpec2 → Items*
+ */
+export interface ProjectSpec2SliceDefaultItem {
+  /**
+   * Percentage field in *ProjectSpec2 → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_spec2.items[].percentage
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  percentage: prismic.RichTextField;
+
+  /**
+   * Description field in *ProjectSpec2 → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_spec2.items[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for ProjectSpec2 Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectSpec2SliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectSpec2SliceDefaultPrimary>,
+  Simplify<ProjectSpec2SliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *ProjectSpec2*
+ */
+type ProjectSpec2SliceVariation = ProjectSpec2SliceDefault;
+
+/**
+ * ProjectSpec2 Shared Slice
+ *
+ * - **API ID**: `project_spec2`
+ * - **Description**: ProjectSpec2
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectSpec2Slice = prismic.SharedSlice<
+  "project_spec2",
+  ProjectSpec2SliceVariation
+>;
+
+/**
+ * Primary content in *ProjectsHeader → Primary*
+ */
+export interface ProjectsHeaderSliceDefaultPrimary {
+  /**
+   * Title field in *ProjectsHeader → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects_header.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Body field in *ProjectsHeader → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects_header.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Default variation for ProjectsHeader Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectsHeaderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectsHeaderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectsHeader*
+ */
+type ProjectsHeaderSliceVariation = ProjectsHeaderSliceDefault;
+
+/**
+ * ProjectsHeader Shared Slice
+ *
+ * - **API ID**: `projects_header`
+ * - **Description**: ProjectsHeader
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectsHeaderSlice = prismic.SharedSlice<
+  "projects_header",
+  ProjectsHeaderSliceVariation
+>;
+
+/**
  * Primary content in *RichText → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -1806,6 +2310,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      CaseStudyDocument,
+      CaseStudyDocumentData,
+      CaseStudyDocumentDataSlicesSlice,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
@@ -1827,6 +2334,16 @@ declare module "@prismicio/client" {
       AboutTimelineSliceDefaultItem,
       AboutTimelineSliceVariation,
       AboutTimelineSliceDefault,
+      CarousalSlice,
+      CarousalSliceDefaultPrimary,
+      CarousalSliceDefaultItem,
+      CarousalSliceVariation,
+      CarousalSliceDefault,
+      CaseStudySlice,
+      CaseStudySliceDefaultPrimary,
+      CaseStudySliceDefaultItem,
+      CaseStudySliceVariation,
+      CaseStudySliceDefault,
       ContactSlice,
       ContactSliceDefaultPrimary,
       ContactSliceDefaultItem,
@@ -1866,6 +2383,20 @@ declare module "@prismicio/client" {
       HomeTeamSliceDefaultItem,
       HomeTeamSliceVariation,
       HomeTeamSliceDefault,
+      ProjectSpec1Slice,
+      ProjectSpec1SliceDefaultPrimary,
+      ProjectSpec1SliceDefaultItem,
+      ProjectSpec1SliceVariation,
+      ProjectSpec1SliceDefault,
+      ProjectSpec2Slice,
+      ProjectSpec2SliceDefaultPrimary,
+      ProjectSpec2SliceDefaultItem,
+      ProjectSpec2SliceVariation,
+      ProjectSpec2SliceDefault,
+      ProjectsHeaderSlice,
+      ProjectsHeaderSliceDefaultPrimary,
+      ProjectsHeaderSliceVariation,
+      ProjectsHeaderSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,

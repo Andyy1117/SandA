@@ -31,7 +31,7 @@ const AboutHistory = ({ slice }: AboutHistoryProps): JSX.Element => {
                 </h2>
               }}
           />
-          <div className="text-center md:text-start text-balance mt-8 text-xl text-slate-500">
+          <div className="text-center md:text-start text-balance mt-8 text-xl text-slate-500 space-y-6">
             <PrismicRichText field={slice.primary.body} />
           </div>
         </div>
