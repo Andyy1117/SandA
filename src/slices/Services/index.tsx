@@ -28,7 +28,7 @@ const Services = ({ slice }: ServicesProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <div className="flex flex-col md:flex-row">
-        <div className="items-left justify-center mr-6">
+        <div className="items-left justify-center mr-8">
           <PrismicRichText 
             field={slice.primary.title} 
             components={{
@@ -44,7 +44,7 @@ const Services = ({ slice }: ServicesProps): JSX.Element => {
           </div>
           <ButtonOrange 
             field={slice.primary.button_link}
-            className="mt-6"><>{slice.primary.button_label}</>
+            className="mt-8"><>{slice.primary.button_label}</>
           </ButtonOrange>
         </div>
 

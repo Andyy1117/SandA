@@ -35,7 +35,7 @@ const AboutTimeline = ({ slice }: AboutTimelineProps): JSX.Element => {
           </h2>
         }}
       />
-      <div className="mx-auto max-w-md text-center text-balance my-8">
+      <div className="mx-auto max-w-md text-center text-balance my-8 text-xl text-slate-600">
         <PrismicRichText field={slice.primary.description} />
       </div>
 

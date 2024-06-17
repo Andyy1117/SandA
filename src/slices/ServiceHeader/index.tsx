@@ -20,14 +20,14 @@ const ServiceHeader = ({ slice }: ServiceHeaderProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="h-screen"
     >
-      <div className="relative flex flex-col md:flex-row h-full gap-6">
-        <div className="md:w-1/2 relative h-full">
+      <div className="relative flex flex-col h-full gap-6">
+        <div className="w-full relative h-full">
           {isFilled.image(slice.primary.image) && (
-            <PrismicNextImage field={slice.primary.image} className="w-full h-full object-cover" />
+            <PrismicNextImage field={slice.primary.image} className="w-full h-full object-cover bg-black opacity-90" />
           )}
 
-          {/* Overlay for mobile view */}
-          <div className="absolute inset-0 flex flex-col justify-center items-center text-center md:hidden h-full">
+          {/* Overlay for mobile and tablet view */}
+          <div className="absolute inset-0 flex flex-col justify-center items-center text-center h-full">
             {isFilled.richText(slice.primary.title) && (
               <h1 className="text-white text-5xl mb-4 font-bold">
                 <PrismicText field={slice.primary.title} />
@@ -42,23 +42,6 @@ const ServiceHeader = ({ slice }: ServiceHeaderProps): JSX.Element => {
               <ButtonOrange field={slice.primary.button_link}>{slice.primary.button_label}</ButtonOrange>
             )}
           </div>
-        </div>
-
-        {/* Text container for desktop view */}
-        <div className="md:w-1/2 my-auto items-start hidden md:flex flex-col h-full justify-center">
-          {isFilled.richText(slice.primary.title) && (
-            <h1 className="text-balance text-7xl mb-4 font-bold">
-              <PrismicText field={slice.primary.title} />
-            </h1>
-          )}
-          {isFilled.richText(slice.primary.body) && (
-            <div className="text-left text-lg mb-4">
-              <PrismicRichText field={slice.primary.body} />
-            </div>
-          )}
-          {isFilled.link(slice.primary.button_link) && (
-            <ButtonOrange field={slice.primary.button_link}>{slice.primary.button_label}</ButtonOrange>
-          )}
         </div>
       </div>
     </section>

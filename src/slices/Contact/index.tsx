@@ -35,7 +35,7 @@ const Contact = ({ slice }: ContactProps): JSX.Element => {
                 )
               }}
           />
-        <div className="max-w-md text-center text-balance mt-4 text-lg">
+        <div className="max-w-md text-center text-balance mt-4 text-xl text-slate-600">
           <PrismicRichText field={slice.primary.body} />
         </div>
       </div>

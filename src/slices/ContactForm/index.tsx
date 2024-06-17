@@ -39,7 +39,7 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
               ),
             }}
           />
-          <div className="bg-opacity-90 p-8 rounded-lg shadow-lg">
+          <div className="bg-opacity-90 p-8 rounded-lg shadow-lg w-full">
             <MessageForm />
           </div>
         </div>

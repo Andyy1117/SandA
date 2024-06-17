@@ -19,7 +19,7 @@ const SecondaryCta = ({ slice }: SecondaryCtaProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="-mt-10"
     >
-      <div className="bg-[#ffa600] rounded-lg p-8 items-center justify-center">
+      <div className="bg-[#FFAC1C] rounded-lg p-8 items-center justify-center">
         <PrismicRichText 
         field={slice.primary.title} 
         components={{

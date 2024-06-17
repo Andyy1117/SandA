@@ -27,7 +27,7 @@ const ServiceBenefits = ({ slice }: ServiceBenefitsProps): JSX.Element => {
           </div>
         </div>
         <div className="md:w-1/2">
-          <div className="text-start text-balance mb-4">
+          <div className="text-start text-balance mb-4 text-lg text-slate-600">
             <PrismicRichText field={slice.primary.body} />
           </div>
           <div className="space-x-4">
