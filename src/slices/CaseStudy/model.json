@@ -11,26 +11,7 @@
       "version": "initial",
       "description": "Default",
       "imageUrl": "",
-      "primary": {
-        "title": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Title",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "heading2"
-          }
-        },
-        "body": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Body",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph"
-          }
-        }
-      },
+      "primary": {},
       "items": {
         "case_study": {
           "type": "Link",

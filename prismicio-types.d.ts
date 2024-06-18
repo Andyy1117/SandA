@@ -13,11 +13,11 @@ type CaseStudyDocumentDataSlicesSlice =
   | RichTextSlice;
 
 /**
- * Content for Case Study documents
+ * Content for Projects documents
  */
 interface CaseStudyDocumentData {
   /**
-   * Heading field in *Case Study*
+   * Heading field in *Projects*
    *
    * - **Field Type**: Title
    * - **Placeholder**: *None*
@@ -28,7 +28,7 @@ interface CaseStudyDocumentData {
   heading: prismic.TitleField;
 
   /**
-   * Body field in *Case Study*
+   * Body field in *Projects*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -39,7 +39,7 @@ interface CaseStudyDocumentData {
   body: prismic.RichTextField;
 
   /**
-   * Image field in *Case Study*
+   * Image field in *Projects*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -50,7 +50,7 @@ interface CaseStudyDocumentData {
   image: prismic.ImageField<never>;
 
   /**
-   * Slice Zone field in *Case Study*
+   * Slice Zone field in *Projects*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -59,7 +59,7 @@ interface CaseStudyDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<CaseStudyDocumentDataSlicesSlice> /**
-   * Meta Description field in *Case Study*
+   * Meta Description field in *Projects*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
@@ -70,7 +70,7 @@ interface CaseStudyDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Case Study*
+   * Meta Image field in *Projects*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -81,7 +81,7 @@ interface CaseStudyDocumentData {
   meta_image: prismic.ImageField<never>;
 
   /**
-   * Meta Title field in *Case Study*
+   * Meta Title field in *Projects*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
@@ -93,7 +93,7 @@ interface CaseStudyDocumentData {
 }
 
 /**
- * Case Study document from Prismic
+ * Projects document from Prismic
  *
  * - **API ID**: `case_study`
  * - **Repeatable**: `true`
@@ -604,31 +604,6 @@ export type CarousalSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *CaseStudy → Primary*
- */
-export interface CaseStudySliceDefaultPrimary {
-  /**
-   * Title field in *CaseStudy → Primary*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: *None*
-   * - **API ID Path**: case_study.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.TitleField;
-
-  /**
-   * Body field in *CaseStudy → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: case_study.primary.body
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  body: prismic.RichTextField;
-}
-
-/**
  * Primary content in *CaseStudy → Items*
  */
 export interface CaseStudySliceDefaultItem {
@@ -652,7 +627,7 @@ export interface CaseStudySliceDefaultItem {
  */
 export type CaseStudySliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<CaseStudySliceDefaultPrimary>,
+  Record<string, never>,
   Simplify<CaseStudySliceDefaultItem>
 >;
 
@@ -2340,7 +2315,6 @@ declare module "@prismicio/client" {
       CarousalSliceVariation,
       CarousalSliceDefault,
       CaseStudySlice,
-      CaseStudySliceDefaultPrimary,
       CaseStudySliceDefaultItem,
       CaseStudySliceVariation,
       CaseStudySliceDefault,

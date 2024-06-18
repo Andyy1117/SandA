@@ -27,8 +27,8 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
         <div className="absolute inset-0 bg-black opacity-50"></div>
       </div>
 
-      <Bounded>
-        <div className="relative z-20 p-4 w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl">
+      <div>
+        <div className="relative z-10 p-4 w-full md:max-w-3xl">
           <PrismicRichText 
             field={slice.primary.heading} 
             components={{
@@ -39,11 +39,11 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
               ),
             }}
           />
-          <div className="bg-opacity-90 p-8 rounded-lg shadow-lg w-full">
+          <div>
             <MessageForm />
           </div>
         </div>
-      </Bounded>
+      </div>
     </section>
   );
 };
