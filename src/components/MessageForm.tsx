@@ -9,9 +9,9 @@ export default function MessageForm() {
   const { pending } = useFormStatus();
 
   return (
-    <section id='contact'>
+    <section id='contact' className="w-full px-4 md:px-0">
         <form 
-          className='mt-10 flex flex-col'
+          className='mt-10 flex flex-col w-full'
           action={async (formData) => {
             console.log("Running on client")
             console.log(formData.get('senderEmail'));
@@ -19,11 +19,11 @@ export default function MessageForm() {
             await sendEmail(formData);
         }}
         >
-            <div className='flex flex-row gap-4 mb-3'>
-              
+            <div className='flex flex-col md:flex-row gap-4 mb-3'>
+
               {/* First Name */}
               <input 
-                className='w-1/2 h-14 rounded-lg border border-black/10 px-4'
+                className='w-full md:w-1/2 h-14 rounded-lg border border-black/10 px-4'
                 name='senderFirstName'
                 type='firstName' 
                 required
@@ -32,18 +32,18 @@ export default function MessageForm() {
 
               {/* Last Name */}
               <input 
-                className='w-1/2 h-14 rounded-lg border border-black/10 px-4'
+                className='w-full md:w-1/2 h-14 rounded-lg border border-black/10 px-4'
                 name='senderLastName'
                 type='lastName' 
                 required
                 maxLength={500}
                 placeholder='Last Name'/>
             </div>
-            <div className='flex flex-row gap-4'>
+            <div className='flex flex-col md:flex-row gap-4'>
 
               {/* Email */}
               <input 
-                className='flex-grow h-14 rounded-lg border border-black/10 px-4'
+                className='w-full md:flex-grow h-14 rounded-lg border border-black/10 px-4'
                 name='senderEmail'
                 type='email' 
                 required
@@ -52,7 +52,7 @@ export default function MessageForm() {
 
               {/* Phone */}
               <input 
-                className='flex-grow h-14 rounded-lg border border-black/10 px-4'
+                className='w-full md:flex-grow h-14 rounded-lg border border-black/10 px-4'
                 name='senderPhone'
                 type='phone' 
                 required
@@ -62,7 +62,7 @@ export default function MessageForm() {
 
             {/* Message */}
             <textarea
-              className='h-52 my-3 rounded-lg border border-black/10 px-4 py-4'
+              className='h-52 my-3 rounded-lg border border-black/10 px-4 py-4 w-full'
               placeholder='Your Message'
               name='message'
               required
@@ -72,7 +72,6 @@ export default function MessageForm() {
             <SubmitBtn />
             
         </form>
-      
     </section>
   )
 }
