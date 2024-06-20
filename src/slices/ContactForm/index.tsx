@@ -3,6 +3,7 @@ import MessageForm from "@/components/MessageForm";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { Toaster } from "react-hot-toast";
 
 /**
  * Props for `ContactForm`.
@@ -19,6 +20,7 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="relative flex items-center justify-center min-h-screen text-center bg-gray-800 md:mt-0"
     >
+      <Toaster position="top-right" />
       <div className="absolute inset-0 overflow-hidden z-0">
         <PrismicNextImage 
           field={slice.primary.image} 

@@ -4,6 +4,7 @@ import React from 'react';
 import { sendEmail } from '@/server/sendEmail';
 import { useFormStatus } from 'react-dom';
 import SubmitBtn from '@/components/submit-btn';
+import toast from "react-hot-toast";
 
 export default function MessageForm() {
   const { pending } = useFormStatus();
@@ -13,10 +14,14 @@ export default function MessageForm() {
         <form 
           className='mt-10 flex flex-col w-full'
           action={async (formData) => {
-            console.log("Running on client")
-            console.log(formData.get('senderEmail'));
-            console.log(formData.get('message'));
-            await sendEmail(formData);
+
+            const {data, error} = await sendEmail(formData);
+            if (error) {
+              toast.error(error);
+              return;
+            }
+
+            toast.success("Email sent successfully!");
         }}
         >
             <div className='flex flex-col md:flex-row gap-4 mb-3'>
@@ -70,7 +75,6 @@ export default function MessageForm() {
               />
 
             <SubmitBtn />
-            
         </form>
     </section>
   )

@@ -7,6 +7,8 @@ import * as prismic from "@prismicio/client";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
+import { Toaster } from "react-hot-toast"
+
 type Params = { uid: string };
 
 /**

@@ -16,7 +16,7 @@ export default async function Footer() {
           <span className='sr-only'>S&A Trade Home Page</span>
         </Link>
         <nav aria-label='Footer'>
-          <ul className='flex gap-6'>
+          <ul className='flex flex-col md:flex-row gap-6'>
             {settings.data.navigation.map(( item ) => (
               <li key={item.label}>
                 <PrismicNextLink field={item.link}
