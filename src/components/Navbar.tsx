@@ -45,7 +45,7 @@ export default function Navbar({settings}:NavbarProps) {
 
         {/* Mobile Nav */}
 
-        <div className={clsx("fixed bottom-0 right-0 left-0 top-0 z-40 flex flex-col items-end ga-4 pr-4 pt-14 transition-transform bg-white duration-300 ease-in-out motion-reduce:transition-none md:hidden", open ? "translate-x-0" : "translate-x-[100%]")}>
+        <div className={clsx("fixed bottom-0 right-0 left-0 top-0 z-40 text-3xl flex flex-col items-end gap-4 pr-4 pt-14 transition-transform bg-white duration-300 ease-in-out motion-reduce:transition-none md:hidden", open ? "translate-x-0" : "translate-x-[100%]")}>
         <button 
                 type="button" 
                 className="fixed right-4 top-4 block p-2 text-3xl md:hidden"
