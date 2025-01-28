@@ -18,7 +18,7 @@ const HomeAbout2 = ({ slice }: HomeAbout2Props): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-[#FFAC1C]"
+      className="bg-gradient-to-r from-[#FFA500] to-[#FFD54A]]"
     >
       <div className="flex flex-col md:flex-row items-center md:items-start md:space-x-8">
         <div className="md:w-1/2 p-4">
@@ -30,9 +30,9 @@ const HomeAbout2 = ({ slice }: HomeAbout2Props): JSX.Element => {
           field={slice.primary.title} 
           components={{
             heading2: ({ children }) =>
-              <h2 className="text-balance text-center text-white text-4xl md:text-5xl font-medium">{ children }</h2>
+              <h2 className="text-balance text-center text-4xl md:text-5xl font-medium">{ children }</h2>
           }}/>
-          <div className="mx-auto mt-8 max-w-md text-balance text-white text-center text-xl font-medium">
+          <div className="mx-auto mt-8 max-w-md text-balance text-center text-xl font-medium">
             <PrismicRichText field={slice.primary.body} />
           </div>
 

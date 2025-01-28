@@ -108,7 +108,109 @@ export type CaseStudyDocument<Lang extends string = string> =
     Lang
   >;
 
+type OperationsDocumentDataSlicesSlice =
+  | OperationsSlice
+  | OperationsHeaderSlice;
+
+/**
+ * Content for Operations documents
+ */
+interface OperationsDocumentData {
+  /**
+   * Heading field in *Operations*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: operations.heading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Body field in *Operations*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: operations.body
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Image field in *Operations*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: operations.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *Operations*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: operations.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<OperationsDocumentDataSlicesSlice> /**
+   * Meta Description field in *Operations*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: operations.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Operations*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: operations.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Operations*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: operations.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Operations document from Prismic
+ *
+ * - **API ID**: `operations`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type OperationsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<OperationsDocumentData>,
+    "operations",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice =
+  | OperationsSlice
+  | OperationsHeaderSlice
   | CaseStudySlice
   | ProjectsHeaderSlice
   | SecondaryCtaSlice
@@ -305,6 +407,7 @@ export type SettingsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | CaseStudyDocument
+  | OperationsDocument
   | PageDocument
   | SettingsDocument;
 
@@ -1390,6 +1493,151 @@ export type HomeTeamSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Operations → Primary*
+ */
+export interface OperationsSliceDefaultPrimary {
+  /**
+   * Heading field in *Operations → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: operations.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Body field in *Operations → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: operations.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Operations → Items*
+ */
+export interface OperationsSliceDefaultItem {
+  /**
+   * Operations field in *Operations → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: operations.items[].operations
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  operations: prismic.ContentRelationshipField;
+}
+
+/**
+ * Default variation for Operations Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OperationsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OperationsSliceDefaultPrimary>,
+  Simplify<OperationsSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Operations*
+ */
+type OperationsSliceVariation = OperationsSliceDefault;
+
+/**
+ * Operations Shared Slice
+ *
+ * - **API ID**: `operations`
+ * - **Description**: Operations
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OperationsSlice = prismic.SharedSlice<
+  "operations",
+  OperationsSliceVariation
+>;
+
+/**
+ * Primary content in *OperationsHeader → Primary*
+ */
+export interface OperationsHeaderSliceDefaultPrimary {
+  /**
+   * Heading field in *OperationsHeader → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: operations_header.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Body field in *OperationsHeader → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: operations_header.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * image1 field in *OperationsHeader → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: operations_header.primary.image1
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image1: prismic.ImageField<never>;
+
+  /**
+   * image2 field in *OperationsHeader → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: operations_header.primary.image2
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image2: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for OperationsHeader Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OperationsHeaderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OperationsHeaderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *OperationsHeader*
+ */
+type OperationsHeaderSliceVariation = OperationsHeaderSliceDefault;
+
+/**
+ * OperationsHeader Shared Slice
+ *
+ * - **API ID**: `operations_header`
+ * - **Description**: OperationsHeader
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OperationsHeaderSlice = prismic.SharedSlice<
+  "operations_header",
+  OperationsHeaderSliceVariation
+>;
+
+/**
  * Primary content in *ProjectSpec1 → Primary*
  */
 export interface ProjectSpec1SliceDefaultPrimary {
@@ -2288,6 +2536,9 @@ declare module "@prismicio/client" {
       CaseStudyDocument,
       CaseStudyDocumentData,
       CaseStudyDocumentDataSlicesSlice,
+      OperationsDocument,
+      OperationsDocumentData,
+      OperationsDocumentDataSlicesSlice,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
@@ -2357,6 +2608,15 @@ declare module "@prismicio/client" {
       HomeTeamSliceDefaultItem,
       HomeTeamSliceVariation,
       HomeTeamSliceDefault,
+      OperationsSlice,
+      OperationsSliceDefaultPrimary,
+      OperationsSliceDefaultItem,
+      OperationsSliceVariation,
+      OperationsSliceDefault,
+      OperationsHeaderSlice,
+      OperationsHeaderSliceDefaultPrimary,
+      OperationsHeaderSliceVariation,
+      OperationsHeaderSliceDefault,
       ProjectSpec1Slice,
       ProjectSpec1SliceDefaultPrimary,
       ProjectSpec1SliceDefaultItem,

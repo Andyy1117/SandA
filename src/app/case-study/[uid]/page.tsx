@@ -21,7 +21,7 @@ export default async function Page({ params }: { params: Params }) {
 		<Bounded as={"article"} className="mt-24">
 			<h1 className="text-7xl font-medium text-center">
 				<PrismicText field={page.data.heading} />
-				<p className="text-lg text-yellow-500">Case Study</p>
+				{/* <p className="text-lg text-yellow-500">Case Study</p> */}
 				<p className="mb-4 mt-8 text-lg text-center">
 					<PrismicText field={page.data.body} />
 				</p>
