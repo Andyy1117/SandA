@@ -109,6 +109,7 @@ export type CaseStudyDocument<Lang extends string = string> =
   >;
 
 type OperationsDocumentDataSlicesSlice =
+  | RichTextSlice
   | OperationsSlice
   | OperationsHeaderSlice;
 
